@@ -25,7 +25,7 @@ Page({
     }
   },
   onShareTimeline() {
-    '小程序官方组件展示'
+    'BlackEight'
   },
 
   data: {
