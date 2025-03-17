@@ -1,0 +1,422 @@
+@import "../common/index.wxss";
+
+.weui-agree__link {
+  display: inline;
+  color: var(--weui-LINK);
+}
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  padding: 40rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 顶部标题样式 */
+.header {
+  width: 100%;
+  text-align: center;
+  margin-top: 40rpx;
+  margin-bottom: 80rpx;
+}
+
+.title {
+  color: white;
+  font-size: 48rpx;
+  font-weight: bold;
+  padding: 20rpx 0;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24rpx;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 16rpx;
+  border-radius: 30rpx;
+}
+
+/* 计分板样式 */
+.scoreboard {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20rpx;
+  gap: 30rpx;
+}
+
+/* 玩家区域样式 */
+.player-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 280rpx;
+}
+
+.player-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  background: rgba(255, 255, 255, 0.2);
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 4rpx solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.player-avatar text {
+  color: white;
+  font-size: 48rpx;
+  font-weight: bold;
+  opacity: 0.9;
+}
+
+.player-name {
+  color: white;
+  font-size: 40rpx;
+  margin-bottom: 40rpx;
+}
+
+.player-score {
+  color: white;
+  font-size: 120rpx;
+  font-weight: bold;
+  margin-bottom: 40rpx;
+}
+
+/* 加减分控制器样式 */
+.score-control {
+  width: 100%;
+  height: 340rpx;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.control-btn {
+  width: 100%;
+  height: 180rpx;
+  background: white;
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.control-btn.add {
+  margin-bottom: 20rpx;
+}
+
+.control-btn text {
+  font-size: 80rpx;
+  color: #000000;
+}
+
+/* 中间信息区域样式 */
+.center-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 280rpx;
+  height: 340rpx;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.vs-text {
+  color: #ff3333;
+  font-size: 60rpx;
+  font-weight: bold;
+}
+
+.center-content {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20rpx;
+}
+
+.total-games {
+  color: white;
+  font-size: 32rpx;
+  text-align: center;
+  width: 120rpx;
+}
+
+.games-number {
+  color: white;
+  font-size: 48rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  text-align: center;
+  width: 120rpx;
+  background: transparent;
+  border: none;
+  min-height: unset;
+}
+
+.center-controls {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+  padding: 20rpx;
+  border-radius: 20rpx;
+}
+
+.center-controls .control-btn {
+  width: 100%;
+  height: 60rpx;
+  background: white;
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-controls .control-btn text {
+  font-size: 32rpx;
+  color: #000000;
+  font-weight: bold;
+}
+
+.center-controls .control-btn.rotate-hint {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10rpx;
+}
+
+.center-controls .control-btn.rotate-hint text:first-child {
+  font-size: 40rpx;
+  margin-right: 10rpx;
+  display: inline-block;
+}
+
+.center-controls .control-btn.rotate-hint .hint-text {
+  font-size: 28rpx;
+}
+
+/* 操作按钮样式 */
+.action-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 30rpx 0;
+}
+
+.action-buttons button {
+  width: 45%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1890ff;
+  font-size: 28rpx;
+  border-radius: 40rpx;
+}
+
+/* 提示文本样式 */
+.hint-text {
+  width: 100%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24rpx;
+  margin: 20rpx 0;
+}
+
+/* 计分按钮样式 */
+.score-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 20rpx 0;
+}
+
+.score-btn {
+  width: 22%;
+  padding: 20rpx 0;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.score-btn.minus {
+  background: white;
+  color: #1890ff;
+}
+
+.score-btn.foul {
+  background: #ff4d4f;
+  color: white;
+}
+
+.score-btn.clean {
+  background: #fa8c16;
+  color: white;
+}
+
+.score-btn.normal {
+  background: #1890ff;
+  color: white;
+}
+
+/* 底部功能按钮样式 */
+.function-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30rpx;
+}
+
+.function-btn {
+  width: 22%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1890ff;
+  font-size: 28rpx;
+  padding: 16rpx 0;
+  border-radius: 10rpx;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  line-height: 2.2;
+}
+
+/* 底部导航栏样式 */
+.bottom-nav {
+  width: 100%;
+  padding: 20rpx 40rpx;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.bottom-nav .action-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.bottom-nav .action-buttons button {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1890ff;
+  font-size: 28rpx;
+  padding: 16rpx 0;
+  border-radius: 40rpx;
+  line-height: 2;
+}
+
+/* 横屏模式样式 */
+.container-landscape {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.landscape-scoreboard {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.landscape-player {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 40rpx;
+  box-sizing: border-box;
+}
+
+.landscape-player.red {
+  background: rgba(255, 0, 0, 0.8);
+}
+
+.landscape-player.blue {
+  background: rgba(65, 105, 225, 0.8);
+}
+
+.landscape-score {
+  font-size: 320rpx;
+  color: white;
+  font-weight: bold;
+  line-height: 1;
+  text-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.2);
+  transform: rotate(90deg);
+}
+
+.landscape-controls {
+  position: absolute;
+  right: 60rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 40rpx;
+}
+
+.landscape-btn {
+  width: 100rpx;
+  height: 100rpx;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.landscape-btn text {
+  font-size: 60rpx;
+  color: #000000;
+}
+
+.landscape-btn.minus text {
+  transform: rotate(90deg);
+  display: inline-block;
+}
+
+.switch-to-portrait {
+  position: fixed;
+  top: 50%;
+  right: 40rpx;
+  transform: translateY(-50%) rotate(90deg);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20rpx 40rpx;
+  border-radius: 40rpx;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.switch-to-portrait text {
+  color: #000000;
+  font-size: 28rpx;
+  font-weight: bold;
+}

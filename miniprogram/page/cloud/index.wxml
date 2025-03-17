@@ -1,0 +1,13 @@
+<view class="page" data-weui-theme="{{theme}}">
+  <view class="index">
+    <view class="index-hd">
+      <image class="index-logo" src="../component/resources/kind/logo.png"></image>
+      <view class="index-desc">Black Eight</view>
+    </view>
+    <view class="index-bd">
+      <view class="content">
+        <!-- 这里可以添加你的主要内容 -->
+      </view>
+    </view>
+  </view>
+</view>
