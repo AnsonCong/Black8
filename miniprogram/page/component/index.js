@@ -276,4 +276,20 @@ Page({
       'player2.score': 0
     });
   },
+
+  // 处理选手名称变更
+  onPlayerNameChange(e) {
+    const player = e.currentTarget.dataset.player;
+    let value = e.detail.value.trim();
+    
+    // 如果输入为空，使用默认值
+    if (!value) {
+      value = player === 'player1' ? '主场选手' : '客场选手';
+    }
+    
+    // 更新选手名称
+    this.setData({
+      [`${player}.name`]: value
+    });
+  }
 })

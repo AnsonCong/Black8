@@ -1,12 +1,130 @@
-<view class="page" data-weui-theme="{{theme}}">
-  <view class="index">
-    <view class="index-hd">
-      <image class="index-logo" src="../component/resources/kind/logo.png"></image>
-      <view class="index-desc">Black Eight</view>
+<view class="container">
+  <view class="header">
+    <view class="title">
+      <text>9球追分助手</text>
     </view>
-    <view class="index-bd">
-      <view class="content">
-        <!-- 这里可以添加你的主要内容 -->
+  </view>
+
+  <!-- 追分功能区域 -->
+  <view class="chase-points-section">
+    <!-- 第一个区块（合并后的） -->
+    <view class="chase-block chase-block-large">
+      <view class="players-container" data-count="{{players.length}}">
+        <block wx:for="{{players}}" wx:key="id">
+          <view class="player-item {{selectedPlayerId === item.id ? 'selected' : ''}}">
+            <view class="player-avatar" 
+                  bindtap="{{isPlaying ? 'selectPlayer' : ''}}" 
+                  data-id="{{item.id}}"
+                  data-index="{{index}}"></view>
+            <view class="player-name-container" bindtap="{{!isPlaying ? 'editPlayerName' : ''}}" data-index="{{index}}">
+              <text wx:if="{{!item.isEditing}}" class="player-name {{!isPlaying ? 'editable' : ''}}">{{item.name || '未命名'}}</text>
+              <input wx:if="{{item.isEditing}}" 
+                     class="player-name-input" 
+                     value="{{item.name}}" 
+                     focus="{{item.isEditing}}"
+                     bindblur="savePlayerName"
+                     bindconfirm="savePlayerName"
+                     data-index="{{index}}"
+                     maxlength="8"/>
+            </view>
+            <text class="player-score">{{item.score}}</text>
+            <!-- 选中指示器 -->
+            <view wx:if="{{selectedPlayerId === item.id && isPlaying}}" class="select-indicator"></view>
+          </view>
+          
+          <view class="vs-container" wx:if="{{index < players.length - 1}}">
+            <text class="vs-text">VS</text>
+          </view>
+        </block>
+      </view>
+
+      <!-- 分隔线 -->
+      <view class="divider"></view>
+
+      <!-- 比赛控制按钮 -->
+      <view class="match-controls">
+        <button class="match-btn start-btn" bindtap="startMatch" wx:if="{{!isPlaying}}">开始比赛</button>
+        <button class="match-btn end-btn" bindtap="endMatch" wx:if="{{isPlaying}}">结束比赛</button>
+        <button class="match-btn reset-btn" bindtap="resetScores" wx:if="{{!isPlaying}}">重置分数</button>
+      </view>
+    </view>
+    
+    <!-- 第二个区块 -->
+    <view class="chase-block">
+      <view class="score-controls">
+        <!-- 加分按钮行 -->
+        <view class="score-row add-score-row">
+          <button class="score-btn add-btn" bindtap="addCustomScore" data-value="1">+1</button>
+          <button class="score-btn add-btn" bindtap="addCustomScore" data-value="2">+2</button>
+          <button class="score-btn add-btn" bindtap="addCustomScore" data-value="3">+3</button>
+          <button class="score-btn add-btn" bindtap="addCustomScore" data-value="4">+4</button>
+          <button class="score-btn add-btn" bindtap="addCustomScore" data-value="5">+5</button>
+          <view class="custom-score-btn">
+            <button wx:if="{{!isCustomAdd}}" 
+                    class="score-btn add-btn custom-edit-btn" 
+                    bindtap="addCustomScore"
+                    catchlongpress="showCustomAdd"
+                    data-value="{{customAddValue}}">
+              <text class="score-text">+{{customAddValue}}</text>
+              <text class="edit-hint">长按修改</text>
+            </button>
+            <view wx:if="{{isCustomAdd}}" class="custom-edit-container">
+              <input class="custom-score-input add" 
+                     type="number" 
+                     value="{{tempCustomAddValue}}"
+                     focus="{{isCustomAdd}}"
+                     bindinput="onCustomAddInput"/>
+              <view class="input-controls">
+                <button class="input-btn confirm-btn" bindtap="saveCustomAdd">确定</button>
+                <button class="input-btn cancel-btn" bindtap="cancelCustomAdd">取消</button>
+              </view>
+            </view>
+          </view>
+        </view>
+        
+        <!-- 减分按钮行 -->
+        <view class="score-row subtract-score-row">
+          <button class="score-btn subtract-btn" bindtap="subtractCustomScore" data-value="1">-1</button>
+          <button class="score-btn subtract-btn" bindtap="subtractCustomScore" data-value="2">-2</button>
+          <button class="score-btn subtract-btn" bindtap="subtractCustomScore" data-value="3">-3</button>
+          <button class="score-btn subtract-btn" bindtap="subtractCustomScore" data-value="4">-4</button>
+          <button class="score-btn subtract-btn" bindtap="subtractCustomScore" data-value="5">-5</button>
+          <view class="custom-score-btn">
+            <button wx:if="{{!isCustomSubtract}}" 
+                    class="score-btn subtract-btn custom-edit-btn" 
+                    bindtap="subtractCustomScore"
+                    catchlongpress="showCustomSubtract"
+                    data-value="{{customSubtractValue}}">
+              <text class="score-text">-{{customSubtractValue}}</text>
+              <text class="edit-hint">长按修改</text>
+            </button>
+            <view wx:if="{{isCustomSubtract}}" class="custom-edit-container">
+              <input class="custom-score-input subtract" 
+                     type="number" 
+                     value="{{tempCustomSubtractValue}}"
+                     focus="{{isCustomSubtract}}"
+                     bindinput="onCustomSubtractInput"/>
+              <view class="input-controls">
+                <button class="input-btn confirm-btn" bindtap="saveCustomSubtract">确定</button>
+                <button class="input-btn cancel-btn" bindtap="cancelCustomSubtract">取消</button>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 第三个区块 -->
+    <view class="chase-block">
+      <view class="player-controls">
+        <button class="control-btn add-player-btn" bindtap="addPlayer" disabled="{{isPlaying}}">
+          <text class="add-icon">+</text>
+          <text>添加球友</text>
+        </button>
+        <button class="control-btn remove-player-btn" bindtap="removePlayer" disabled="{{isPlaying}}">
+          <text class="remove-icon">-</text>
+          <text>减少球友</text>
+        </button>
       </view>
     </view>
   </view>
