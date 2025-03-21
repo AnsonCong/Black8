@@ -173,15 +173,28 @@
 .center-controls .control-btn {
   width: 160rpx;
   height: 70rpx;
-  background: #ffffff;
-  border: 1rpx solid #eeeeee;
   border-radius: 12rpx;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24rpx;
-  color: #666666;
+  font-size: 28rpx;
+  font-weight: 600;
   margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+.center-controls .control-btn:first-child {
+  background: #1890ff;
+  color: white;
+  border: none;
+  box-shadow: 0 4rpx 12rpx rgba(24, 144, 255, 0.2);
+}
+
+.center-controls .control-btn:last-child {
+  background: #ff3b30;
+  color: white;
+  border: none;
+  box-shadow: 0 4rpx 12rpx rgba(255, 59, 48, 0.2);
 }
 
 /* 操作按钮样式 */
