@@ -30,10 +30,10 @@
 
       <!-- VS标志 -->
       <view class="center-info">
-        <text class="vs-text">VS</text>
+        <text class="vs-text" style="position: relative; left: 1rpx; top: 41rpx">VS</text>
         <view class="center-content" style="width: 173rpx; height: 348rpx; display: flex; box-sizing: border-box">
-          <text class="total-games" style="position: relative; left: 0rpx; top: 119rpx">总局数</text>
-          <input style="position: relative; left: 0rpx; top: 112rpx; height: 89rpx; display: block; box-sizing: border-box; width: 128rpx" class="games-number" type="number" model:value="{{totalGames}}" bindinput="onTotalGamesChange" bindblur="onTotalGamesBlur" />
+          <text class="total-games" style="position: relative; left: 0rpx; top: 119rpx; font-size: 32rpx">总局数</text>
+          <input style="position: relative; left: 0rpx; top: 112rpx; height: 89rpx; display: block; box-sizing: border-box; width: 160rpx; font-size: 64rpx" class="games-number" type="number" model:value="{{totalGames}}" bindinput="onTotalGamesChange" bindblur="onTotalGamesBlur" />
           <view class="center-controls" style="height: 145rpx; display: flex; box-sizing: border-box">
             <view class="control-btn" bindtap="switchScreen" style="height: 75rpx; display: flex; box-sizing: border-box; position: relative; left: 0rpx; top: 206rpx">旋转屏幕</view>
             <view class="control-btn" bindtap="resetGame" style="height: 72rpx; display: flex; box-sizing: border-box; position: relative; left: 0rpx; top: 231rpx">重置</view>
