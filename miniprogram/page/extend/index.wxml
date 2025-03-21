@@ -6,7 +6,7 @@
     <view class="index">
       <view class="index-bd">
         <view class="content">
-          <view class="player-section">
+          <view class="player-section" style="width: 560rpx; display: block; box-sizing: border-box; position: relative; left: -28rpx; top: 20rpx">
             <view class="player-info">
               <view class="player-name-container" bindtap="editPlayerName" data-index="1">
                 <text class="player-name" wx:if="{{!player1Editing}}">{{player1Name || '球友1'}}</text>
@@ -20,7 +20,7 @@
                        maxlength="8"/>
               </view>
               <view class="player-balls">
-                <view class="ball-list" bindlongpress="showBalls" bindtouchcancel="hideBalls" bindtouchend="hideBalls" data-index="1">
+                <view class="ball-list" bindlongpress="showBalls" bindtouchend="hideBalls" bindtouchmove="hideBalls" bindtouchcancel="hideBalls" data-index="1">
                   <text wx:for="{{player1Balls}}" wx:key="*this" class="ball {{!player1Show ? 'ball-hidden' : ''}}">{{player1Show ? item : '?'}}</text>
                   <view class="mask" wx:if="{{!player1Show}}">
                     <text class="mask-text">长按查看球号</text>
@@ -29,7 +29,7 @@
               </view>
             </view>
           </view>
-          <view class="player-section">
+          <view class="player-section" style="width: 560rpx; display: block; box-sizing: border-box; position: relative; left: -27rpx; top: 20rpx">
             <view class="player-info">
               <view class="player-name-container" bindtap="editPlayerName" data-index="2">
                 <text class="player-name" wx:if="{{!player2Editing}}">{{player2Name || '球友2'}}</text>
@@ -43,7 +43,7 @@
                        maxlength="8"/>
               </view>
               <view class="player-balls">
-                <view class="ball-list" bindlongpress="showBalls" bindtouchcancel="hideBalls" bindtouchend="hideBalls" data-index="2">
+                <view class="ball-list" bindlongpress="showBalls" bindtouchend="hideBalls" bindtouchmove="hideBalls" bindtouchcancel="hideBalls" data-index="2">
                   <text wx:for="{{player2Balls}}" wx:key="*this" class="ball {{!player2Show ? 'ball-hidden' : ''}}">{{player2Show ? item : '?'}}</text>
                   <view class="mask" wx:if="{{!player2Show}}">
                     <text class="mask-text">长按查看球号</text>
@@ -52,7 +52,7 @@
               </view>
             </view>
           </view>
-          <view class="player-section">
+          <view class="player-section" style="width: 560rpx; display: block; box-sizing: border-box; position: relative; left: -25rpx; top: 18rpx">
             <view class="player-info">
               <view class="player-name-container" bindtap="editPlayerName" data-index="3">
                 <text class="player-name" wx:if="{{!player3Editing}}">{{player3Name || '球友3'}}</text>
@@ -66,7 +66,7 @@
                        maxlength="8"/>
               </view>
               <view class="player-balls">
-                <view class="ball-list" bindlongpress="showBalls" bindtouchcancel="hideBalls" bindtouchend="hideBalls" data-index="3">
+                <view class="ball-list" bindlongpress="showBalls" bindtouchend="hideBalls" bindtouchmove="hideBalls" bindtouchcancel="hideBalls" data-index="3">
                   <text wx:for="{{player3Balls}}" wx:key="*this" class="ball {{!player3Show ? 'ball-hidden' : ''}}">{{player3Show ? item : '?'}}</text>
                   <view class="mask" wx:if="{{!player3Show}}">
                     <text class="mask-text">长按查看球号</text>
