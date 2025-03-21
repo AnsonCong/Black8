@@ -10,7 +10,7 @@
     </view>
 
     <!-- 计分板区域 -->
-    <view class="scoreboard" style="height: 1085rpx; display: flex; box-sizing: border-box; width: 707rpx">
+    <view class="scoreboard" style="height: 906rpx; display: flex; box-sizing: border-box; width: 707rpx; position: relative; left: 0rpx; top: -144rpx">
       <!-- 左边球员 -->
       <view class="player-section" style="height: 780rpx; display: flex; box-sizing: border-box">
         <view class="player-avatar">
@@ -31,12 +31,12 @@
       <!-- VS标志 -->
       <view class="center-info">
         <text class="vs-text">VS</text>
-        <view class="center-content" style="width: 173rpx; height: 396rpx; display: flex; box-sizing: border-box">
-          <text class="total-games">总局数</text>
-          <input class="games-number" type="number" model:value="{{totalGames}}" bindinput="onTotalGamesChange" bindblur="onTotalGamesBlur" />
-          <view class="center-controls">
-            <view class="control-btn" bindtap="switchScreen" style="height: 75rpx; display: flex; box-sizing: border-box">旋转屏幕</view>
-            <view class="control-btn" bindtap="resetGame" style="height: 72rpx; display: flex; box-sizing: border-box">重置</view>
+        <view class="center-content" style="width: 173rpx; height: 348rpx; display: flex; box-sizing: border-box">
+          <text class="total-games" style="position: relative; left: 0rpx; top: 119rpx">总局数</text>
+          <input style="position: relative; left: 0rpx; top: 112rpx; height: 89rpx; display: block; box-sizing: border-box; width: 128rpx" class="games-number" type="number" model:value="{{totalGames}}" bindinput="onTotalGamesChange" bindblur="onTotalGamesBlur" />
+          <view class="center-controls" style="height: 145rpx; display: flex; box-sizing: border-box">
+            <view class="control-btn" bindtap="switchScreen" style="height: 75rpx; display: flex; box-sizing: border-box; position: relative; left: 0rpx; top: 206rpx">旋转屏幕</view>
+            <view class="control-btn" bindtap="resetGame" style="height: 72rpx; display: flex; box-sizing: border-box; position: relative; left: 0rpx; top: 231rpx">重置</view>
           </view>
         </view>
       </view>

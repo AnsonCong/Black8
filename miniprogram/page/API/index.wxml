@@ -11,7 +11,7 @@
     <view class="chase-block chase-block-large" style="height: 548rpx; display: block; box-sizing: border-box; width: 635rpx; position: relative; left: 0rpx; top: -36rpx">
       <view class="players-container" data-count="{{players.length}}" style="height: 306rpx; display: flex; box-sizing: border-box">
         <block wx:for="{{players}}" wx:key="id">
-          <view class="player-item {{selectedPlayerId === item.id ? 'selected' : ''}}">
+          <view class="player-item {{selectedPlayerId === item.id ? 'selected' : ''}}" style="position: relative; left: 0rpx; top: 32rpx">
             <view class="player-avatar" 
                   bindtap="{{isPlaying ? 'selectPlayer' : ''}}" 
                   data-id="{{item.id}}"
@@ -43,9 +43,9 @@
 
       <!-- 比赛控制按钮 -->
       <view class="match-controls" style="height: 114rpx; display: flex; box-sizing: border-box">
-        <button class="match-btn start-btn" bindtap="startMatch" wx:if="{{!isPlaying}}" style="position: relative; left: 9rpx; top: -23rpx">开始比赛</button>
+        <button class="match-btn start-btn" bindtap="startMatch" wx:if="{{!isPlaying}}" style="position: relative; left: 9rpx; top: 13rpx">开始比赛</button>
         <button class="match-btn end-btn" bindtap="endMatch" wx:if="{{isPlaying}}">结束比赛</button>
-        <button class="match-btn reset-btn" bindtap="resetScores" wx:if="{{!isPlaying}}" style="position: relative; left: 0rpx; top: -23rpx">重置分数</button>
+        <button class="match-btn reset-btn" bindtap="resetScores" wx:if="{{!isPlaying}}" style="position: relative; left: 0rpx; top: 13rpx">重置分数</button>
       </view>
     </view>
     
