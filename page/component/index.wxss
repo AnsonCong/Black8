@@ -1,0 +1,23 @@
+.score-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20rpx;  /* 添加左右边距 */
+}
+
+.home-team,
+.away-team {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-width: 0;  /* 确保flex item可以正确收缩 */
+}
+
+.home-team {
+  padding-left: 16rpx;  /* 主场左侧留白 */
+}
+
+.away-team {
+  padding-right: 16rpx;  /* 客场右侧留白 */
+  justify-content: flex-end;
+} 

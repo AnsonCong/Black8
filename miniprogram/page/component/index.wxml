@@ -3,24 +3,26 @@
   <!-- 竖屏模式 -->
   <block wx:if="{{!isLandscape}}">
     <!-- 顶部标题区域 -->
-    <view class="header" style="width: 674rpx; height: 60rpx; display: block; box-sizing: border-box">
-      <text>中式8球🎱记分</text>
+    <view class="header">
+      <view class="title">
+        <text>中式8球记分</text>
+      </view>
     </view>
 
     <!-- 计分板区域 -->
-    <view class="scoreboard" style="display: flex; box-sizing: border-box; height: 1033rpx">
+    <view class="scoreboard" style="height: 1085rpx; display: flex; box-sizing: border-box; width: 707rpx">
       <!-- 左边球员 -->
-      <view class="player-section" style="height: 799rpx; display: flex; box-sizing: border-box">
+      <view class="player-section" style="height: 780rpx; display: flex; box-sizing: border-box">
         <view class="player-avatar">
           <text>主</text>
         </view>
-        <text class="player-name">主场选手</text>
+        <input class="player-name" type="text" model:value="{{player1.name}}" placeholder="主场选手" />
         <text class="player-score">{{player1.score}}</text>
         <view class="score-control">
-          <view class="control-btn add" bindtap="addScore" data-player="player1" style="height: 133rpx; display: flex; box-sizing: border-box">
+          <view class="control-btn add" bindtap="addScore" data-player="player1" style="height: 135rpx; display: flex; box-sizing: border-box">
             <text>+</text>
           </view>
-          <view class="control-btn minus" bindtap="minusScore" data-player="player1" style="height: 133rpx; display: flex; box-sizing: border-box">
+          <view class="control-btn minus" bindtap="minusScore" data-player="player1" style="height: 135rpx; display: flex; box-sizing: border-box">
             <text>-</text>
           </view>
         </view>
@@ -29,28 +31,28 @@
       <!-- VS标志 -->
       <view class="center-info">
         <text class="vs-text">VS</text>
-        <view class="center-content">
+        <view class="center-content" style="width: 173rpx; height: 396rpx; display: flex; box-sizing: border-box">
           <text class="total-games">总局数</text>
           <input class="games-number" type="number" model:value="{{totalGames}}" bindinput="onTotalGamesChange" bindblur="onTotalGamesBlur" />
-          <view class="center-controls" style="height: 205rpx; display: flex; box-sizing: border-box; width: 198rpx">
-            <view class="control-btn" bindtap="switchScreen">旋转屏幕</view>
-            <view class="control-btn" bindtap="resetGame" style="height: 70rpx; display: flex; box-sizing: border-box">重置</view>
+          <view class="center-controls">
+            <view class="control-btn" bindtap="switchScreen" style="height: 75rpx; display: flex; box-sizing: border-box">旋转屏幕</view>
+            <view class="control-btn" bindtap="resetGame" style="height: 72rpx; display: flex; box-sizing: border-box">重置</view>
           </view>
         </view>
       </view>
 
       <!-- 右边球员 -->
-      <view class="player-section" style="height: 799rpx; display: flex; box-sizing: border-box">
+      <view class="player-section" style="height: 780rpx; display: flex; box-sizing: border-box">
         <view class="player-avatar">
           <text>客</text>
         </view>
-        <text class="player-name">客场选手</text>
+        <input class="player-name" type="text" model:value="{{player2.name}}" placeholder="客场选手" />
         <text class="player-score">{{player2.score}}</text>
         <view class="score-control">
-          <view class="control-btn add" bindtap="addScore" data-player="player2" style="height: 133rpx; display: flex; box-sizing: border-box">
+          <view class="control-btn add" bindtap="addScore" data-player="player2" style="height: 135rpx; display: flex; box-sizing: border-box">
             <text>+</text>
           </view>
-          <view class="control-btn minus" bindtap="minusScore" data-player="player2" style="height: 133rpx; display: flex; box-sizing: border-box">
+          <view class="control-btn minus" bindtap="minusScore" data-player="player2" style="height: 135rpx; display: flex; box-sizing: border-box">
             <text>-</text>
           </view>
         </view>
