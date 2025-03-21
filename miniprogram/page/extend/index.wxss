@@ -284,14 +284,12 @@
 
 .action-button {
   width: 40%;
-  padding: 15px 0;
+  height: 88rpx;
+  line-height: 88rpx;
   border-radius: 10px;
   font-size: 18px;
   font-weight: 500;
   transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   text-align: center;
 }
 
