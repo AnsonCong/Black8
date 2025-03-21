@@ -2,7 +2,6 @@
   "pages": [
     "page/component/index",
     "page/API/index",
-    "page/cloud/index",
     "page/extend/index"
   ],
   "window": {
@@ -34,12 +33,6 @@
         "iconPath": "image/billiard.png",
         "selectedIconPath": "image/billiard.png",
         "text": "追分"
-      },
-      {
-        "pagePath": "page/cloud/index",
-        "iconPath": "image/billiard-2.png",
-        "selectedIconPath": "image/billiard-2.png",
-        "text": "斯诺克"
       }
     ]
   },
