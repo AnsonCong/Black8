@@ -1,21 +1,24 @@
-<view class="container" style="height: 1345rpx; display: flex; box-sizing: border-box">
-  <view class="header">
-    <view class="title" style="height: 95rpx; display: block; box-sizing: border-box; position: relative; left: 0rpx; top: -48rpx">
-      <text>9球追分助手</text>
-    </view>
+<!-- 自定义导航栏 -->
+<view class="custom-nav-bar">
+  <view class="nav-bar-content">
+    <text class="nav-bar-title">🎯 9球追分助手</text>
   </view>
+</view>
 
+<view class="container" style="height: 1345rpx; display: flex; box-sizing: border-box">
   <!-- 追分功能区域 -->
   <view class="chase-points-section" style="height: 1129rpx; display: flex; box-sizing: border-box">
     <!-- 第一个区块（合并后的） -->
-    <view class="chase-block chase-block-large" style="height: 548rpx; display: block; box-sizing: border-box; width: 635rpx; position: relative; left: 0rpx; top: -36rpx">
+    <view class="chase-block chase-block-large" style="height: 548rpx; display: block; box-sizing: border-box; width: 635rpx; position: relative; left: 0rpx; top: 0rpx">
       <view class="players-container" data-count="{{players.length}}" style="height: 306rpx; display: flex; box-sizing: border-box">
         <block wx:for="{{players}}" wx:key="id">
           <view class="player-item {{selectedPlayerId === item.id ? 'selected' : ''}}" style="position: relative; left: 0rpx; top: 32rpx">
-            <view class="player-avatar" 
-                  bindtap="{{isPlaying ? 'selectPlayer' : ''}}" 
+            <view class="player-avatar"
+                  bindtap="{{isPlaying ? 'selectPlayer' : ''}}"
                   data-id="{{item.id}}"
-                  data-index="{{index}}"></view>
+                  data-index="{{index}}">
+              <text class="avatar-text">{{item.avatar || '🐱'}}</text>
+            </view>
             <view class="player-name-container" bindtap="{{!isPlaying ? 'editPlayerName' : ''}}" data-index="{{index}}">
               <text wx:if="{{!item.isEditing}}" class="player-name {{!isPlaying ? 'editable' : ''}}">{{item.name || '未命名'}}</text>
               <input wx:if="{{item.isEditing}}" 
@@ -50,10 +53,10 @@
     </view>
     
     <!-- 第二个区块 -->
-    <view class="chase-block" style="position: relative; left: 0rpx; top: -28rpx; height: 297rpx; display: block; box-sizing: border-box">
+    <view class="chase-block" style="position: relative; left: 0rpx; top: 0rpx; height: 297rpx; display: block; box-sizing: border-box">
       <view class="score-controls">
         <!-- 加分按钮行 -->
-        <view class="score-row add-score-row" style="position: relative; left: 0rpx; top: -20rpx">
+        <view class="score-row add-score-row" style="position: relative; left: 0rpx; top: 0rpx">
           <button class="score-btn add-btn" bindtap="addCustomScore" data-value="1">+1</button>
           <button class="score-btn add-btn" bindtap="addCustomScore" data-value="2">+2</button>
           <button class="score-btn add-btn" bindtap="addCustomScore" data-value="3">+3</button>
@@ -83,7 +86,7 @@
         </view>
         
         <!-- 减分按钮行 -->
-        <view class="score-row subtract-score-row" style="position: relative; left: 0rpx; top: -39rpx">
+        <view class="score-row subtract-score-row" style="position: relative; left: 0rpx; top: 0rpx">
           <button class="score-btn subtract-btn" bindtap="subtractCustomScore" data-value="1">-1</button>
           <button class="score-btn subtract-btn" bindtap="subtractCustomScore" data-value="2">-2</button>
           <button class="score-btn subtract-btn" bindtap="subtractCustomScore" data-value="3">-3</button>
@@ -115,13 +118,13 @@
     </view>
     
     <!-- 第三个区块 -->
-    <view class="chase-block" style="width: 635rpx; height: 100rpx; display: block; box-sizing: border-box; position: relative; left: 0rpx; top: -23rpx">
+    <view class="chase-block" style="width: 635rpx; height: 100rpx; display: block; box-sizing: border-box; position: relative; left: 0rpx; top: 0rpx">
       <view class="player-controls" style="height: 126rpx; display: flex; box-sizing: border-box">
-        <button class="control-btn add-player-btn" bindtap="addPlayer" disabled="{{isPlaying}}" style="height: 80rpx; display: flex; box-sizing: border-box; left: 0rpx; top: -10rpx; position: relative">
+        <button class="control-btn add-player-btn" bindtap="addPlayer" disabled="{{isPlaying}}" style="height: 80rpx; display: flex; box-sizing: border-box; left: 0rpx; top: 0rpx; position: relative">
           <text class="add-icon">+</text>
           <text>添加球友</text>
         </button>
-        <button class="control-btn remove-player-btn" bindtap="removePlayer" disabled="{{isPlaying}}" style="height: 80rpx; display: flex; box-sizing: border-box; left: 2rpx; top: -10rpx; position: relative">
+        <button class="control-btn remove-player-btn" bindtap="removePlayer" disabled="{{isPlaying}}" style="height: 80rpx; display: flex; box-sizing: border-box; left: 2rpx; top: 0rpx; position: relative">
           <text class="remove-icon">-</text>
           <text>减少球友</text>
         </button>

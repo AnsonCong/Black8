@@ -1,8 +1,8 @@
 Page({
   data: {
     players: [
-      { id: 1, name: '球友1', score: 0, type: 'normal', isEditing: false },
-      { id: 2, name: '球友2', score: 0, type: 'normal', isEditing: false }
+      { id: 1, name: '球友1', score: 0, type: 'normal', isEditing: false, avatar: '🐱' },
+      { id: 2, name: '球友2', score: 0, type: 'normal', isEditing: false, avatar: '🐶' }
     ],
     isPlaying: false,
     isCustomAdd: false,
@@ -34,8 +34,8 @@ Page({
     if (!this.data.players || this.data.players.length === 0) {
       this.setData({
         players: [
-          { id: 1, name: '球友1', score: 0, type: 'normal', isEditing: false },
-          { id: 2, name: '球友2', score: 0, type: 'normal', isEditing: false }
+          { id: 1, name: '球友1', score: 0, type: 'normal', isEditing: false, avatar: '🐱' },
+          { id: 2, name: '球友2', score: 0, type: 'normal', isEditing: false, avatar: '🐶' }
         ]
       });
     }
@@ -67,12 +67,15 @@ Page({
       return;
     }
 
+    // 默认头像列表
+    const defaultAvatars = ['🐱', '🐶', '🐰', '🐻'];
     const newPlayer = {
       id: players.length + 1,
       name: `球友${players.length + 1}`,
       score: 0,
       type: 'normal',
-      isEditing: false
+      isEditing: false,
+      avatar: defaultAvatars[players.length] || '🐱'
     };
 
     this.setData({

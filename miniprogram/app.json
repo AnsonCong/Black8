@@ -1,8 +1,9 @@
 {
   "pages": [
-    "page/component/index",
-    "page/API/index",
-    "page/extend/index"
+    "page/chinese8ball/index",
+    "page/chase9ball/index",
+    "page/snooker/index",
+    "page/ballDivide/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -17,22 +18,28 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "page/component/index",
+        "pagePath": "page/chinese8ball/index",
         "iconPath": "image/snooker.png",
         "selectedIconPath": "image/snooker.png",
         "text": "记分"
       },
       {
-        "pagePath": "page/extend/index",
-        "iconPath": "image/billiard-1.png",
-        "selectedIconPath": "image/billiard-1.png",
-        "text": "分球"
-      },
-      {
-        "pagePath": "page/API/index",
+        "pagePath": "page/chase9ball/index",
         "iconPath": "image/billiard.png",
         "selectedIconPath": "image/billiard.png",
         "text": "追分"
+      },
+      {
+        "pagePath": "page/snooker/index",
+        "iconPath": "image/billiard-2.png",
+        "selectedIconPath": "image/billiard-2.png",
+        "text": "斯诺克"
+      },
+      {
+        "pagePath": "page/ballDivide/index",
+        "iconPath": "image/billiard-1.png",
+        "selectedIconPath": "image/billiard-1.png",
+        "text": "分球"
       }
     ]
   },

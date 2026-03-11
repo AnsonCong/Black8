@@ -87,8 +87,11 @@ Page({
       score: 0
     },
     totalGames: 9,
-    isLandscape: false
+    isLandscape: false,
+    manualOrientation: false  // 是否手动控制屏幕方向
   },
+  // 存储手动控制状态（不放在data中避免触发渲染）
+  isManualControl: false,
 
   onLoad() {
     this.setData({
@@ -110,6 +113,13 @@ Page({
     if (this.refreshTimer) {
       clearInterval(this.refreshTimer);
     }
+    // 确保 tabBar 显示
+    wx.showTabBar();
+  },
+
+  onHide() {
+    // 页面隐藏时恢复 tabBar
+    wx.showTabBar();
   },
 
   // 自动刷新功能
@@ -174,9 +184,15 @@ Page({
 
   // 切换横屏
   switchScreen() {
-    this.setData({
-      isLandscape: !this.data.isLandscape
-    });
+    const isLandscape = !this.data.isLandscape;
+    this.setData({ isLandscape });
+
+    // 控制 tabBar 显示/隐藏
+    if (isLandscape) {
+      wx.hideTabBar();
+    } else {
+      wx.showTabBar();
+    }
   },
 
   // 重置比分

@@ -1,0 +1,21 @@
+<view class="container">
+  <view class="login-box">
+    <image class="logo" src="/assets/images/logo.png" mode="aspectFit"></image>
+    <view class="title">欢迎使用</view>
+    
+    <block wx:if="{{!hasUserInfo}}">
+      <button 
+        wx:if="{{canIUseGetUserProfile}}"
+        class="login-btn" 
+        bindtap="getUserProfile"
+      >微信登录</button>
+    </block>
+    
+    <block wx:else>
+      <view class="user-info">
+        <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFit"></image>
+        <text class="nickname">{{userInfo.nickName}}</text>
+      </view>
+    </block>
+  </view>
+</view> 

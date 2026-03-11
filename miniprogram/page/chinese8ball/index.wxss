@@ -8,11 +8,54 @@
 .container {
   min-height: 100vh;
   background: #ffffff;
-  padding: 40rpx;
+  padding: 200rpx 40rpx 200rpx; /* 顶部留出导航栏空间 */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* 横屏时隐藏 tabBar */
+.container-landscape {
+  width: 100vw;
+  height: 100vh;
+  background: #ffffff;
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 页面根元素全屏设置 */
+page {
+  background: #ffffff;
+  width: 100%;
+  height: 100%;
+}
+
+/* 自定义导航栏 */
+.custom-nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #ffffff;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.nav-bar-content {
+  padding-top: 88rpx; /* 状态栏高度 */
+  padding-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-bar-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #1890ff;
 }
 
 /* 顶部标题样式 */
@@ -309,98 +352,108 @@ button {
   line-height: 2;
 }
 
-/* 横屏模式样式 */
-.container-landscape {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: #ffffff;
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-}
+/* 横屏模式样式 - 页面内横屏布局 */
 
 .landscape-scoreboard {
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 40rpx);
+  flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 20rpx;
 }
 
 .landscape-player {
   flex: 1;
-  width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 40rpx;
+  padding: 30rpx;
   box-sizing: border-box;
+  border-radius: 20rpx;
 }
 
 .landscape-player.red {
   background: #fff5f5;
-  border-bottom: 1rpx solid #ffeeee;
 }
 
 .landscape-player.blue {
   background: #f0f7ff;
 }
 
+.landscape-player.red::after {
+  content: '';
+  position: absolute;
+  bottom: -10rpx;
+  left: 10%;
+  width: 80%;
+  height: 2rpx;
+  background: #e0e0e0;
+}
+
+/* 横屏内容区域 - 水平排列 */
+.landscape-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 40rpx;
+}
+
+/* 数字躺着 - 底部朝左 */
 .landscape-score {
-  font-size: 240rpx;
+  font-size: 200rpx;
   color: #333333;
   font-weight: bold;
   line-height: 1;
   transform: rotate(90deg);
+  display: inline-block;
 }
 
-.landscape-controls {
-  position: absolute;
-  right: 60rpx;
+/* 竖着排列的加减按钮 */
+.landscape-controls-vertical {
   display: flex;
   flex-direction: column;
   gap: 30rpx;
+  align-items: center;
+  justify-content: center;
 }
 
 .landscape-btn {
-  width: 90rpx;
-  height: 90rpx;
+  width: 100rpx;
+  height: 100rpx;
   background: #ffffff;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
 }
 
-.landscape-btn text {
-  font-size: 40rpx;
+/* 旋转的加减号 */
+.landscape-btn .rotated-text {
+  font-size: 48rpx;
   color: #0088ff;
-}
-
-.landscape-btn.minus text {
-  transform: rotate(90deg);
+  font-weight: bold;
   display: block;
+  transform: rotate(90deg);
 }
 
 .switch-to-portrait {
   position: fixed;
-  top: 50%;
-  left: 30rpx;
-  transform: translateY(-50%) rotate(90deg);
-  background: #ffffff;
-  padding: 16rpx 30rpx;
-  border-radius: 30rpx;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  bottom: 40rpx;
+  right: 40rpx;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 16rpx 32rpx;
+  border-radius: 40rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.2);
+  z-index: 100;
 }
 
 .switch-to-portrait text {
-  color: #666666;
-  font-size: 26rpx;
+  color: #ffffff;
+  font-size: 28rpx;
   display: block;
 }
 

@@ -1,0 +1,99 @@
+<!-- 自定义导航栏 -->
+<view class="custom-nav-bar">
+  <view class="nav-bar-content">
+    <text class="nav-bar-title">🎱 斯诺克记分</text>
+  </view>
+</view>
+
+<view class="container">
+  <!-- 红球计数器（开球后显示） -->
+  <view class="red-balls-section" wx:if="{{gameStarted}}">
+    <text class="section-title">剩余红球</text>
+    <view class="red-balls-control">
+      <view class="red-btn minus" bindtap="minusRedBall">-</view>
+      <view class="red-count">
+        <text class="red-number">{{redBalls}}</text>
+        <text class="red-total">/15</text>
+      </view>
+      <view class="red-btn add" bindtap="addRedBall">+</view>
+    </view>
+  </view>
+
+  <!-- 选手区域（左右布局） -->
+  <view class="players-section {{gameStarted ? '' : 'pre-game'}}">
+    <!-- 选手1 -->
+    <view class="player-card {{currentPlayer === 1 ? 'active' : ''}} {{gameStarted ? '' : 'selectable'}}" bindtap="selectFirstPlayer" data-player="1">
+      <view class="player-header">
+        <text class="player-avatar">{{player1.avatar}}</text>
+        <view class="player-name-box" catch:tap="preventSelect">
+          <input class="name-input" value="{{player1.name}}" data-player="1"
+                 bindblur="savePlayerName" placeholder="选手1" catch:tap="preventSelect"/>
+        </view>
+      </view>
+      <view class="score-display">
+        <text class="score-number">{{player1.score}}</text>
+      </view>
+      <text class="current-tag" wx:if="{{gameStarted && currentPlayer === 1}}">当前击球</text>
+      <text class="select-tag" wx:if="{{!gameStarted}}">点击选择开球方</text>
+    </view>
+
+    <!-- 选手2 -->
+    <view class="player-card {{currentPlayer === 2 ? 'active' : ''}} {{gameStarted ? '' : 'selectable'}}" bindtap="selectFirstPlayer" data-player="2">
+      <view class="player-header">
+        <text class="player-avatar">{{player2.avatar}}</text>
+        <view class="player-name-box" catch:tap="preventSelect">
+          <input class="name-input" value="{{player2.name}}" data-player="2"
+                 bindblur="savePlayerName" placeholder="选手2" catch:tap="preventSelect"/>
+        </view>
+      </view>
+      <view class="score-display">
+        <text class="score-number">{{player2.score}}</text>
+      </view>
+      <text class="current-tag" wx:if="{{gameStarted && currentPlayer === 2}}">当前击球</text>
+      <text class="select-tag" wx:if="{{!gameStarted}}">点击选择开球方</text>
+    </view>
+  </view>
+
+  <!-- 轮换和重置按钮（中间区域） -->
+  <view class="center-actions" wx:if="{{gameStarted}}">
+    <view class="center-btn switch-btn-center" bindtap="switchPlayer">
+      <text class="center-btn-icon">⇄</text>
+      <text class="center-btn-text">轮换选手</text>
+    </view>
+    <view class="center-btn reset-btn-center" bindtap="confirmReset">
+      <text class="center-btn-icon">↺</text>
+      <text class="center-btn-text">重置比赛</text>
+    </view>
+  </view>
+
+  <!-- 公共操作区 -->
+  <view class="action-section" wx:if="{{gameStarted}}">
+    <view class="action-title">当前选手: {{currentPlayer === 1 ? player1.name : player2.name}}</view>
+
+    <!-- 红球按钮 -->
+    <view class="ball-btn red-ball-btn" bindtap="potRed">
+      <text>红 +1</text>
+    </view>
+
+    <!-- 彩球按钮区 -->
+    <view class="color-balls">
+      <view wx:for="{{colors}}" wx:key="value" class="color-btn"
+            style="background: {{item.color}}; color: {{item.value >= 5 ? '#fff' : '#333'}}"
+            bindtap="potColor" data-value="{{item.value}}">
+        <text>{{item.name}}</text>
+        <text class="color-value">+{{item.value}}</text>
+      </view>
+    </view>
+
+    <!-- 犯规区和操作按钮 -->
+    <view class="foul-section">
+      <text class="foul-title">犯规罚分（给对手+分）</text>
+      <view class="foul-buttons">
+        <view wx:for="{{fouls}}" wx:key="*this" class="foul-btn" bindtap="foul" data-points="{{item}}">
+          <text>+{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>

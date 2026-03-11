@@ -32,6 +32,9 @@ CustomPage({
         this.setData({theme})
       })
     }
+
+    // 初始化长按定时器对象
+    this.longPressTimers = {};
   },
   kindToggle(e) {
     const id = e.currentTarget.id
@@ -86,22 +89,64 @@ CustomPage({
     return array;
   },
 
-  // 显示球号
-  showBalls(e) {
-    const index = e.currentTarget.dataset.index;
-    const showKey = `player${index}Show`;
-    this.setData({
-      [showKey]: true
-    });
+  // 确保长按定时器对象已初始化
+  getLongPressTimers() {
+    if (!this.longPressTimers) {
+      this.longPressTimers = {};
+    }
+    return this.longPressTimers;
   },
 
-  // 隐藏球号
-  hideBalls(e) {
+  // 触摸开始 - 启动长按定时器
+  onTouchStart(e) {
     const index = e.currentTarget.dataset.index;
     const showKey = `player${index}Show`;
-    this.setData({
-      [showKey]: false
-    });
+    const timers = this.getLongPressTimers();
+
+    // 清除之前的定时器
+    if (timers[index]) {
+      clearTimeout(timers[index]);
+      timers[index] = null;
+    }
+
+    // 设置新的定时器，200ms 后显示球号
+    timers[index] = setTimeout(() => {
+      this.setData({
+        [showKey]: true
+      });
+      // 震动反馈
+      wx.vibrateShort({ type: 'light' });
+    }, 200);
+  },
+
+  // 触摸结束 - 清除定时器并隐藏球号
+  onTouchEnd(e) {
+    const index = e.currentTarget.dataset.index;
+    const showKey = `player${index}Show`;
+    const timers = this.getLongPressTimers();
+
+    // 清除定时器
+    if (timers[index]) {
+      clearTimeout(timers[index]);
+      timers[index] = null;
+    }
+
+    // 延迟隐藏球号，确保 setData 被执行
+    setTimeout(() => {
+      this.setData({
+        [showKey]: false
+      });
+    }, 50);
+  },
+
+  // 触摸取消 - 清除定时器并隐藏球号
+  onTouchCancel(e) {
+    this.onTouchEnd(e);
+  },
+
+  // 触摸移动 - 隐藏球号
+  onTouchMove(e) {
+    this.onTouchEnd(e);
   },
 
   // 分配球
