@@ -1,4 +1,8 @@
 /* 斯诺克记分页面样式 */
+page {
+  background: #f5f7fa;
+}
+
 .container {
   min-height: 100vh;
   background: #f5f7fa;
