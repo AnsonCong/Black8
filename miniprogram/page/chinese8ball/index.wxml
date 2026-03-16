@@ -58,6 +58,11 @@
         </view>
       </view>
     </view>
+
+    <!-- 广告区块 -->
+    <view class="ad-section">
+      <ad-custom unit-id="adunit-629a09d1f73c8161" bindload="adLoad" binderror="adError" bindclose="adClose" style="width: 100%; height: 120px;"></ad-custom>
+    </view>
   </block>
 
   <!-- 横屏模式 -->

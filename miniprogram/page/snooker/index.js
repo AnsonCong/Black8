@@ -152,5 +152,28 @@ Page({
         [key]: currentScore - 1
       });
     }
+  },
+
+  // 广告加载成功
+  adLoad() {
+    console.log('原生模板广告加载成功');
+  },
+
+  // 广告加载失败
+  adError(err) {
+    console.error('原生模板广告加载失败', err);
+  },
+
+  // 广告关闭
+  adClose() {
+    console.log('原生模板广告关闭');
+  },
+
+  // 分享功能
+  onShareAppMessage() {
+    return {
+      title: '斯诺克记分',
+      path: 'page/snooker/index'
+    }
   }
 });

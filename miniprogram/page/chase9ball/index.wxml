@@ -130,5 +130,14 @@
         </button>
       </view>
     </view>
+
+  </view>
+
+  <!-- 插屏广告按钮 -->
+  <view class="support-section" style="width: 635rpx; margin-top: 20rpx;">
+    <button class="support-btn" bindtap="showInterstitialAd" style="height: 70rpx; display: flex; box-sizing: border-box;">
+      <text class="support-icon">❤️</text>
+      <text>点击观看广告支持作者</text>
+    </button>
   </view>
 </view>

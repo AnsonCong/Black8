@@ -379,7 +379,9 @@
   display: flex;
   flex-direction: column;
   gap: 20rpx;
-  padding: 20rpx 0;
+  padding: 0;
+  height: 100%;
+  justify-content: center;
 }
 
 .score-row {
@@ -578,4 +580,41 @@
 .player-avatar[bindtap=""] {
   cursor: not-allowed;
   opacity: 0.8;
+}
+
+/* 支持作者区块样式 */
+.support-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 支持作者按钮样式 */
+.support-btn {
+  width: 100%;
+  height: 70rpx;
+  background: linear-gradient(135deg, #ff4d4f, #ff7875);
+  color: #ffffff;
+  border: none;
+  border-radius: 35rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+  box-shadow: 0 4rpx 12rpx rgba(255, 77, 79, 0.3);
+}
+
+.support-btn::after {
+  border: none;
+}
+
+.support-btn:active {
+  opacity: 0.9;
+  transform: scale(0.98);
+}
+
+.support-icon {
+  font-size: 30rpx;
 }

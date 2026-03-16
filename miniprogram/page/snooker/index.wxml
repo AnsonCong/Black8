@@ -54,6 +54,11 @@
     </view>
   </view>
 
+  <!-- 广告区域（开球前显示） -->
+  <view class="ad-section" wx:if="{{!gameStarted}}">
+    <ad-custom unit-id="adunit-e43292f9ab96bd64" bindload="adLoad" binderror="adError" bindclose="adClose" style="width: 100%; height: 120px;"></ad-custom>
+  </view>
+
   <!-- 轮换和重置按钮（中间区域） -->
   <view class="center-actions" wx:if="{{gameStarted}}">
     <view class="center-btn switch-btn-center" bindtap="switchPlayer">

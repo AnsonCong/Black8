@@ -21,7 +21,7 @@ Page({
   onShareAppMessage() {
     return {
       title: 'Black Eight',
-      path: 'page/component/index'
+      path: 'page/chinese8ball/index'
     }
   },
   onShareTimeline() {
@@ -297,15 +297,30 @@ Page({
   onPlayerNameChange(e) {
     const player = e.currentTarget.dataset.player;
     let value = e.detail.value.trim();
-    
+
     // 如果输入为空，使用默认值
     if (!value) {
       value = player === 'player1' ? '主场选手' : '客场选手';
     }
-    
+
     // 更新选手名称
     this.setData({
       [`${player}.name`]: value
     });
+  },
+
+  // 广告加载成功
+  adLoad() {
+    console.log('原生模板广告加载成功');
+  },
+
+  // 广告加载失败
+  adError(err) {
+    console.error('原生模板广告加载失败', err);
+  },
+
+  // 广告关闭
+  adClose() {
+    console.log('原生模板广告关闭');
   }
 })

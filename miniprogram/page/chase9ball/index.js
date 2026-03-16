@@ -1,3 +1,6 @@
+// 插屏广告实例
+let interstitialAd = null
+
 Page({
   data: {
     players: [
@@ -39,12 +42,28 @@ Page({
         ]
       });
     }
+
+    // 创建插屏广告实例
+    if (wx.createInterstitialAd) {
+      interstitialAd = wx.createInterstitialAd({
+        adUnitId: 'adunit-74a4fccc87813436'
+      });
+      interstitialAd.onLoad(() => {
+        console.log('插屏广告加载成功');
+      });
+      interstitialAd.onError((err) => {
+        console.error('插屏广告加载失败', err);
+      });
+      interstitialAd.onClose(() => {
+        console.log('插屏广告关闭');
+      });
+    }
   },
 
   onShareAppMessage() {
     return {
       title: 'Black Eight',
-      path: 'page/API/index'
+      path: 'page/chase9ball/index'
     }
   },
 
@@ -382,5 +401,23 @@ Page({
     });
 
     this.setData({ players });
+  },
+
+  // 显示插屏广告
+  showInterstitialAd() {
+    if (interstitialAd) {
+      interstitialAd.show().catch((err) => {
+        console.error('插屏广告显示失败', err);
+        wx.showToast({
+          title: '广告加载失败，请稍后重试',
+          icon: 'none'
+        });
+      });
+    } else {
+      wx.showToast({
+        title: '广告功能暂未开放',
+        icon: 'none'
+      });
+    }
   }
 });

@@ -463,3 +463,13 @@ button {
   justify-content: center;
   align-items: center;
 }
+
+/* 广告区块样式 */
+.ad-section {
+  width: 100%;
+  margin-top: 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

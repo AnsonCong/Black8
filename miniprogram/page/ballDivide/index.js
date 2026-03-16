@@ -4,7 +4,7 @@ CustomPage({
   onShareAppMessage() {
     return {
       title: 'Black Eight',
-      path: 'page/extend/index'
+      path: 'page/ballDivide/index'
     }
   },
   data: {
